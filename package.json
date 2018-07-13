@@ -1,0 +1,22 @@
+{
+  "name": "websccserver",
+  "version": "1.0.0",
+  "description": "WebSCC Server Configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krishna Paudel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "drivelist": "^6.2.2",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "hogan-express": "^0.5.2",
+    "os": "^0.1.1",
+    "pug": "^2.0.3",
+    "shelljs": "^0.8.2",
+    "socket.io": "^2.1.1"
+  }
+}
