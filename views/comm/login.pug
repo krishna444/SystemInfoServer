@@ -1,0 +1,12 @@
+extends ../layout
+block content
+    div.container-fluid
+        div.row
+            div.col-sm-4.col-sm-offset-4.login_bg
+            h2 User Login 
+                form(action="login")
+                    div.form-group
+                        input.form-control#login_user_name(type='text' placeholder="User Email or Name" name="login_user_name")
+                    div.form-group
+                        input.form-control#login_user_password(type='text' placeholder="User Password" name='login_user_password')
+                    input.btn.btn-block.login_btn#login_btn(type='submit' name='login_btn')

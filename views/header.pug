@@ -1,0 +1,28 @@
+div.row
+  img.img-rounded#center(src='images/LOGO-FE-Pantone.svg', alt='Friedmann Elektrotechnik GmbH',align="center")
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href="#") Frietec
+  button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  div.collapse.navbar-collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href="/") Home <span class="sr-only">(current)</span>      
+      //li.nav-item
+        a.nav-link(href="#") Link      
+      li.nav-item.dropdown.active
+        a.nav-link.dropdown-toggle#navbarDropdown(href='#' role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") System
+        div.dropdown-menu(aria-labelledby="navbarDropdown")
+          a.dropdown-item(href="system-basic") Basic Info
+          a.dropdown-item(href="system-advanced") Advanced Info
+          div.dropdown-divider
+          a.dropdown-item(href="system-misc") Miscellaneous
+      li.nav-item.active
+        a.nav-link(href="/chat") Chat
+      li.nav-item
+        a.nav-link.disabled(href="") Admin
+      li.nav-item
+        a.nav-link(href="about") About
+    form.form-inline.my-2.my-lg-0
+      input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
+      button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search

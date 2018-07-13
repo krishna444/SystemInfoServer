@@ -1,0 +1,103 @@
+extends ../layout
+block content
+    div.container-fluid
+        div.row  
+            div.col-sm-4.panel
+                div Google Chrome installed?
+            div.col-sm-4 
+                -let installed=serverInfo.isInstalled('google-chrome');
+                p=installed?'yes':'no'
+                p=installed? serverInfo.executeSync('google-chrome -version'):""
+        div.row 
+            div.col-sm-4
+                p Java installed?
+            div.col-sm-4 
+                -installed=serverInfo.isInstalled('java')
+                p=installed?'yes':'no'                
+                p=installed?serverInfo.executeSync('java -version'):""
+        div.row
+            div.col-sm-4
+                p Default Java defined?
+            div.col-sm-4
+                p=serverInfo.directoryExists("/usr/lib/jvm/default-java")
+        div.row 
+            div.col-sm-4
+                p PostgreSQL installed?
+            div.col-sm-4
+                -installed=serverInfo.isInstalled('psql')
+                p=installed?'yes':'no'            
+                p=installed?serverInfo.executeSync('psql --version'):""
+        
+        div.row <h3> Cron-Jobs</h3>
+        div.row
+            div.col-sm-4
+                p Chrome autostart at Reboot
+            div.col-sm-4                
+                -exists=serverInfo.fileExists('/etc/cron.d/chrome')
+                p=exists
+                p=exists?serverInfo.readFile('/etc/cron.d/chrome'):""
+        div.row 
+            div.col-sm-4
+                p Services AutoStart at Reboot
+            div.col-sm-4
+                -exists=serverInfo.fileExists('/etc/cron.d/services')
+                p=exists
+                p=exists?serverInfo.readFile('/etc/cron.d/services'):""
+        div.row
+            div.col-sm-4
+                p System Refresh Implementation
+            div.col-sm-8
+                -exists=serverInfo.fileExists("/etc/cron.d/system-refresh")
+                p=exists
+                p=exists?serverInfo.readFile('/etc/cron.d/system-refresh'):""
+        
+        div.row <h3> Disable Updates</h3>
+        div.row
+            div.col-sm-4
+                p /etc/apt/apt.conf.d/10periodic
+            div.col-sm-4
+                p=serverInfo.readFile('/etc/apt/apt.conf.d/10periodic')
+        div.row
+            div.col-sm-4
+                p /etc/apt/apt.conf.d/20auto-upgrades
+            div.col-sm-4
+                p=serverInfo.readFile('/etc/apt/apt.conf.d/20auto-upgrades')
+        div.row
+            div.col-sm-4
+                p /etc/apt/sources.list
+            div.col-sm-4
+                p=serverInfo.readFile('/etc/apt/sources.list')
+
+
+        div.row <h3> Services</h3>
+        div.row 
+            div.col-sm-4 
+                p NTP
+            div.col-sm-4
+                p=serverInfo.executeSync('systemctl status ntp')
+        div.row 
+            div.col-sm-4 
+                p SSH
+            div.col-sm-4
+                p=serverInfo.executeSync('systemctl status ssh')
+        div.row            
+            div.col-sm-4 
+                p TOMCAT
+            div.col-sm-4
+                p=serverInfo.executeSync('systemctl status tomcat')
+        div.row
+            div.col-sm-4 
+                p PostGreSQL
+            div.col-sm-4
+                p=serverInfo.executeSync('systemctl status postgresql') 
+        i.d-none.fas.fa-camera-retro.fa-xs
+        i.d-none.fas.fa-camera-retro.fa-sm
+        i.d-none.fas.fa-camera-retro.fa-lg
+        i.d-none.fas.fa-camera-retro.fa-2x
+        i.d-none.fas.fa-camera-retro.fa-3x
+        i.d-none.fas.fa-camera-retro.fa-5x
+        i.d-none.fas.fa-camera-retro.fa-7x
+        
+        
+
+

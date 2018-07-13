@@ -1,0 +1,24 @@
+extends ../layout
+block content
+    div.container-fluid
+        div.row <b>Interfaces</b>
+        each key in Object.keys(serverInfo.getNetworkInterfaces())
+            - var interface4=serverInfo.getNetworkInterfaces()[key][0]    
+            div=interface4.family+":"+key+" "+ interface4.address+ " "+interface4.netmask
+            - var interface6=serverInfo.getNetworkInterfaces()[key][1]
+            div=interface6.family+":"+key+" "+ interface6.address+ " "+interface6.netmask
+        div.row <b>/etc/default/grub</b>
+        each line in serverInfo.readFile("/etc/default/grub")
+            div=line
+        div.row <b>/etc/network/intefaces</b>
+        each line in serverInfo.readFile("/etc/network/interfaces")
+            div=line
+        div.row <b>/etc/ssh/sshd_config</b>
+        each line in serverInfo.getSpecificLinesofFile("/etc/ssh/sshd_config","PermitRootLogin")
+            div=line
+        div.row <b>/etc/hostname</b>
+        each line in serverInfo.readFile("/etc/hostname")
+            div=line
+        div.row <b>/etc/hosts</b>
+        each line in serverInfo.readFile("/etc/hosts")
+            div=line

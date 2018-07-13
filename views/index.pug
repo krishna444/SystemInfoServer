@@ -1,0 +1,67 @@
+extends layout
+block content
+    div.container-fluid       
+        br
+        div.row System Highlights
+        br
+        div.row 
+            div.col-sm-4 User=#{serverInfo.getUsers().username}
+            div.col-sm-4 Hostname= #{serverInfo.getHostName()}
+            div.col-sm-4 Interfaces= #{Object.keys(serverInfo.getNetworkInterfaces())}
+        div.row
+            div.col-sm-6 RAM installed= #{serverInfo.getTotalMemory()} GB
+            div.col-sm-6 Hard Disk= #{serverInfo.getDrives()}
+        
+        div.row  
+            div.col-sm-4 
+                p Net-Tools installed?
+            div.col-sm-4 
+                p=serverInfo.isInstalled('ifconfig')?'yes':'no'
+
+        div.row  
+            div.col-sm-4 
+                p OpenSSH installed?
+            div.col-sm-4 
+                p=serverInfo.isInstalled('ssh')?'yes':'no'
+
+        div.row  
+            div.col-sm-4 
+                p VIM installed?
+            div.col-sm-4 
+                p=serverInfo.isInstalled('vim')?'yes':'no'
+        
+        div.row 
+            div.col-sm-4
+                div HTOP installed?
+            div.col-sm-4
+                p=serverInfo.isInstalled('htop')?'yes':'no'
+
+        div.row
+            div.col-sm-4
+                div NTP installed?
+            div.col-sm-4
+                p=serverInfo.isInstalled('ntp')?'yes':'no'
+
+        div.row
+            div.col-sm-4
+                div Gdebi installed?
+            div.col-sm-4
+                p=serverInfo.isInstalled('Gdebi')?'yes':'no'
+        
+        
+        //- div.row
+        //-     div.col-sm-4
+        //-         h3 column1
+        //-         h3 column 2      
+        //-     div.col-sm-4
+        //-         h3 column1
+        //-         h3 column 2    
+        //-          div.col-sm-4
+        //-         h3 column1
+        //-         h3 column 2      
+        //-     div.col-sm-4
+        //-         h3 column1
+        //-         h3 column 2      
+        //- div.row
+        //-     div.cols-m-12
+        //-         h2 test 34

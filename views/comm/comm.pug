@@ -1,0 +1,27 @@
+extends ../layout
+
+block scripts
+        script(src='/javascripts/socket.io.js')
+        
+
+block content
+    h1 Hello World!
+    div#future 
+    form#form
+        input#chat_input(type='text')
+        input(type='submit' value='Send')
+    script var socket=io.connect('localhost:3002');    
+        |socket.on('connect',function(data){
+        |    console.log("connected");
+        |    socket.emit('join',"Hello World from client");
+        |});
+        |socket.on('broad', function(data){
+        |    console.log("Appending Data");
+        |    $('#future').append(data+'<br/>')
+        |});
+        |socket.on('json',jsonData=>console.log("WebSocket"+jsonData));
+        |$('form').submit(e=>{
+        |   e.preventDefault();
+        |   let message=$('#chat_input').val();
+        |    socket.emit('messages',message);         
+        |});
